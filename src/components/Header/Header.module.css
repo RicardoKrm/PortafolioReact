@@ -1,0 +1,30 @@
+/* src/components/Header/Header.module.css */
+.header {
+  text-align: center;
+  padding: 100px 20px 60px; /* Ajusta el padding superior para el espacio */
+  position: relative;
+  z-index: 2;
+}
+
+.name {
+  font-size: 3.5rem; /* Tamaño grande para el nombre */
+  color: var(--color-highlight); /* Color de resaltado */
+  margin-bottom: 0.1em;
+  text-shadow: 0 0 10px var(--color-primary-accent),
+    0 0 20px var(--color-secondary-accent); /* Efecto de brillo */
+}
+
+.title {
+  font-size: 1.5rem;
+  color: var(--color-text-light);
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .name {
+    font-size: 2.5rem;
+  }
+  .title {
+    font-size: 1.2rem;
+  }
+}

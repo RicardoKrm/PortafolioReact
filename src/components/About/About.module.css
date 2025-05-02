@@ -1,0 +1,13 @@
+/* src/components/About/About.module.css */
+.about h2 {
+  margin-bottom: 30px;
+}
+
+.about p {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: justify;
+  color: var(--color-text-light);
+  opacity: 0.9;
+}

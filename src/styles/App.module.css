@@ -1,0 +1,6 @@
+/* src/styles/App.module.css */
+.appContainer {
+  position: relative; /* Necesario para posicionar el fondo absoluto */
+  z-index: 1; /* Asegura que el contenido esté encima del fondo */
+  overflow-x: hidden; /* Previene scroll horizontal si hay overflow */
+}

@@ -1,0 +1,32 @@
+/* src/components/Skills/Skills.module.css */
+.skills h2 {
+  margin-bottom: 40px;
+}
+
+.skillsList {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos salten de línea */
+  justify-content: center; /* Centra los elementos horizontalmente */
+  gap: 15px; /* Espacio entre las "píldoras" de habilidades */
+}
+
+.skillItem {
+  display: inline-block;
+  background-color: var(
+    --color-card-background
+  ); /* Fondo similar a las tarjetas */
+  border: 1px solid var(--color-card-border);
+  color: var(--color-highlight); /* Color de resaltado para el texto */
+  padding: 8px 15px;
+  border-radius: 20px; /* Bordes redondeados para parecer "píldoras" */
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.skillItem:hover {
+  background-color: var(
+    --color-card-border
+  ); /* Ligeramente más oscuro al pasar el ratón */
+  transform: translateY(-3px);
+}
