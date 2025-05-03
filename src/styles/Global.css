@@ -1,33 +1,41 @@
-/* src/styles/Global.css */
+/* src/styles/Global.css - Código Completo y Final */
+
+/* Variables de Colores y Fuentes */
 :root {
-  /* Paleta de colores "Gamer/Universo" */
+  /* Paleta de colores "Gamer/Universo/Cyber" */
   --color-background-dark: #0a0a1a; /* Azul oscuro casi negro */
   --color-text-light: #e0e0e0; /* Gris claro */
   --color-primary-accent: #4a00e0; /* Morado vibrante */
   --color-secondary-accent: #8e2de2; /* Morado más claro */
-  --color-highlight: #00ffff; /* Cian brillante */
-  --color-hover: #00c4ff; /* Azul claro para hover */
-  --color-card-background: #1a1a2e; /* Azul oscuro para tarjetas */
-  --color-card-border: #3a3a5a; /* Borde de tarjeta */
+
+  --color-highlight: #00aaff; /* Azul Eléctrico */
+  --color-hover: #00ccff; /* Azul claro ajustado */
+
+  --color-card-background: #1a1a2e; /* Fondo oscuro para tarjetas y secciones */
+  --color-card-border: #3a3a5a; /* Borde de tarjeta/sección */
+
   --color-button-background: var(--color-primary-accent);
   --color-button-text: var(--color-text-light);
   --color-button-hover: var(--color-secondary-accent);
 
-  /* Fuentes */
-  --font-primary: "Arial", sans-serif; /* Elige una fuente moderna */
-  --font-heading: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Elige una fuente para títulos */
+  /* Fuentes Gamer/Futurista */
+  --font-primary: "Poppins", sans-serif; /* Fuente legible para texto general */
+  --font-heading: "Orbitron", sans-serif; /* Fuente llamativa para títulos */
 }
 
+/* Estilos Generales del Cuerpo y Tipografía Base */
 body {
   margin: 0;
   font-family: var(--font-primary);
   background-color: var(--color-background-dark);
   color: var(--color-text-light);
   line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased; /* Mejora la renderización de fuentes */
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Previene el scroll horizontal no deseado */
 }
 
+/* Estilos para Títulos */
 h1,
 h2,
 h3,
@@ -35,31 +43,41 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading);
-  color: var(--color-highlight);
+  color: var(--color-highlight); /* Color de acento principal */
   text-align: center;
   margin-bottom: 1em;
+  text-transform: uppercase; /* Títulos en mayúsculas */
+  letter-spacing: 2px; /* Espaciado entre letras */
+  text-shadow: 0 0 8px var(--color-highlight),
+    0 0 15px var(--color-primary-accent); /* Efecto de brillo */
 }
 
+/* Estilos para Enlaces (<a> tags) */
 a {
-  color: var(--color-highlight);
-  text-decoration: none;
-  transition: color 0.3s ease;
+  color: var(--color-highlight); /* Color base del enlace */
+  text-decoration: none; /* Eliminar subrayado por defecto */
+  border-bottom: 1px dashed var(--color-highlight); /* Borde inferior temático */
+  padding-bottom: 2px; /* Espacio entre texto y borde */
+  transition: color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease; /* Transición suave en hover */
+  opacity: 0.9; /* Ligeramente transparente */
 }
 
 a:hover {
-  color: var(--color-hover);
+  color: var(--color-hover); /* Cambiar color al pasar el ratón */
+  border-color: var(--color-hover); /* Cambiar color del borde */
+  opacity: 1; /* Totalmente opaco */
 }
 
-/* Estilos generales para secciones */
+/* Estilos Generales para Secciones */
 section {
-  padding: 60px 20px;
-  max-width: 1000px;
-  margin: 0 auto;
+  padding: 60px 20px; /* Espaciado interno de las secciones */
+  max-width: 1000px; /* Ancho máximo del contenido */
+  margin: 0 auto; /* Centra la sección */
   position: relative;
-  z-index: 2; /* Asegura que las secciones estén sobre el fondo */
+  z-index: 2; /* Asegura que estén sobre el fondo y el overlay */
 }
 
-/* Botones base */
+/* Estilos Base para Botones */
 button {
   display: inline-block;
   padding: 10px 20px;
@@ -76,9 +94,44 @@ button {
 
 button:hover {
   background-color: var(--color-button-hover);
-  transform: translateY(-2px); /* Pequeño efecto al pasar el ratón */
+  transform: translateY(-2px);
 }
 
 button:active {
   transform: translateY(0);
+}
+
+/* Estilo de Barra de Scroll Personalizada (Webkit) */
+::-webkit-scrollbar {
+  width: 12px; /* Ancho de la barra de scroll vertical */
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background-dark); /* Color de fondo oscuro */
+  border-radius: 10px; /* Bordes redondeados para la pista */
+  border: 1px solid var(--color-card-border); /* Borde sutil */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    var(--color-highlight),
+    var(--color-primary-accent)
+  ); /* Gradiente temático para el thumb */
+  border-radius: 10px; /* Bordes redondeados para el thumb */
+  border: 2px solid var(--color-background-dark); /* Borde para separarlo de la pista */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    to bottom,
+    var(--color-hover),
+    var(--color-secondary-accent)
+  ); /* Cambia el gradiente al pasar el ratón */
+  box-shadow: 0 0 8px var(--color-highlight); /* Añadir un brillo sutil */
+}
+
+/* Comportamiento de Scroll Suave */
+html {
+  scroll-behavior: smooth;
 }

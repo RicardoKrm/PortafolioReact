@@ -3,8 +3,8 @@ import styles from "./SocialLinks.module.css";
 // Puedes instalar una librería de iconos como react-icons:
 // npm install react-icons --save
 // import { FaGithub, FaLinkedin, FaDownload } from 'react-icons/fa';
-// Importa el componente Fade desde react-awesome-reveal
-import { Fade } from "react-awesome-reveal";
+// Importa los componentes Fade y Zoom
+import { Fade, Zoom } from "react-awesome-reveal";
 
 function SocialLinks() {
   // **IMPORTANTE: Reemplaza estos enlaces con tus URLs y la ruta de tu CV**
@@ -19,13 +19,13 @@ function SocialLinks() {
     <section id="contact" className={styles.socialLinks}>
       {" "}
       {/* Podría ser la sección de contacto/footer */}
-      {/* Usamos Fade en lugar de ScrollReveal.div */}
+      {/* El título se desvanece */}
       <Fade duration={800} triggerOnce={true}>
         <h2>Encuéntrame</h2>
       </Fade>
       <div className={styles.linksContainer}>
-        {/* Usamos Fade en lugar de ScrollReveal.div */}
-        <Fade duration={800} delay={100} triggerOnce={true}>
+        {/* Cada botón hace un zoom con retraso */}
+        <Zoom duration={800} delay={100} triggerOnce={true}>
           <a
             href={githubUrl}
             target="_blank"
@@ -35,9 +35,9 @@ function SocialLinks() {
             {/* <FaGithub size={30} /> */} {/* Si usas react-icons */}
             GitHub
           </a>
-        </Fade>
-        {/* Usamos Fade en lugar de ScrollReveal.div */}
-        <Fade duration={800} delay={200} triggerOnce={true}>
+        </Zoom>
+        {/* Cada botón hace un zoom con retraso */}
+        <Zoom duration={800} delay={200} triggerOnce={true}>
           <a
             href={linkedinUrl}
             target="_blank"
@@ -47,9 +47,9 @@ function SocialLinks() {
             {/* <FaLinkedin size={30} /> */} {/* Si usas react-icons */}
             LinkedIn
           </a>
-        </Fade>
-        {/* Usamos Fade en lugar de ScrollReveal.div */}
-        <Fade duration={800} delay={300} triggerOnce={true}>
+        </Zoom>
+        {/* Cada botón hace un zoom con retraso */}
+        <Zoom duration={800} delay={300} triggerOnce={true}>
           <a
             href={cvDownloadUrl}
             download="Ricardokrm_CV"
@@ -58,7 +58,7 @@ function SocialLinks() {
             {/* <FaDownload size={30} /> */} {/* Si usas react-icons */}
             Descargar CV
           </a>
-        </Fade>
+        </Zoom>
       </div>
     </section>
   );

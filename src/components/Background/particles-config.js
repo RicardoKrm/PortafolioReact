@@ -1,73 +1,117 @@
 // src/components/Background/particles-config.js
 const particlesConfig = {
+  // Fondo general
   background: {
     color: {
-      value: "#0a0a1a", // Mismo azul oscuro que el fondo global
+      value: "#0a0a1a", // Mismo azul oscuro casi negro que el fondo global
     },
+    image: "", // Puedes añadir una imagen de fondo sutil si quieres, deja vacío por ahora
+    position: "50% 50%",
+    repeat: "no-repeat",
+    size: "cover",
+    opacity: 1,
   },
-  fpsLimit: 60, // Limita los frames por segundo
+  // Frames por segundo
+  fpsLimit: 90, // Aumentamos un poco el límite de FPS para fluidez (ajusta si causa lentitud)
+  // Interactividad con el ratón
   interactivity: {
     events: {
       onClick: {
-        enable: true,
-        mode: "push", // Crea nuevas partículas al hacer click
+        enable: true, // Habilitar efecto al hacer click
+        mode: "push", // Modo: empujar/crear nuevas partículas
       },
       onHover: {
-        enable: true,
-        mode: "repulse", // Aleja las partículas al pasar el ratón
+        enable: true, // Habilitar efecto al pasar el ratón
+        mode: ["repulse", "grab"], // Modos: repeler partículas y agarrarlas/conectar líneas
       },
-      resize: true,
+      resize: true, // Adaptar interactividad al redimensionar
     },
     modes: {
       push: {
-        quantity: 4,
+        quantity: 4, // Cuántas partículas crear al click
       },
       repulse: {
-        distance: 100, // Distancia de repulsión
-        duration: 0.4,
+        distance: 150, // Distancia de repulsión aumentada
+        duration: 0.8, // Duración del efecto de repulsión
+      },
+      grab: {
+        distance: 180, // Distancia para "agarrar" y mostrar líneas de conexión más fuertes
+        links: {
+          opacity: 0.7, // Opacidad de las líneas al "agarrar"
+        },
       },
     },
   },
+  // Configuración de las partículas
   particles: {
     color: {
-      value: "#e0e0e0", // Color de las partículas (estrellas)
-      // value: ["#e0e0e0", "#00ffff", "#4a00e0"], // Puedes usar múltiples colores
+      // Utilizamos varios colores de tu paleta gamer para las partículas
+      value: ["#e0e0e0", "#00ffff", "#4a00e0", "#8e2de2"], // Gris claro, Cian, Morado vibrante, Morado más claro
     },
     links: {
-      color: "#3a3a5a", // Color de las líneas (simulan conexiones o código)
-      distance: 150,
-      enable: true,
-      opacity: 0.3,
-      width: 1,
+      // Estilo de las líneas de conexión
+      color: "random", // El color de la línea puede ser random entre los colores de las partículas
+      distance: 160, // Distancia máxima para que se formen líneas
+      enable: true, // Habilitar líneas
+      opacity: 0.3, // Opacidad normal de las líneas
+      width: 1.5, // Ancho de las líneas ligeramente aumentado
+      // Puedes añadir un efecto de brillo a las líneas si te animas con CSS más complejo
     },
     move: {
-      direction: "none",
-      enable: true,
+      direction: "none", // Dirección de movimiento aleatoria
+      enable: true, // Habilitar movimiento
       outModes: {
-        default: "bounce",
+        default: "bounce", // Rebotar en los bordes
       },
-      random: false,
-      speed: 1, // Velocidad del movimiento
-      straight: false,
+      random: true, // Movimiento más aleatorio
+      speed: 1.5, // Velocidad del movimiento ajustada
+      straight: false, // No moverse en línea recta
+      // Añadir rastro
+      trail: {
+        enable: true, // Habilitar rastro
+        length: 8, // Longitud del rastro (cuántos frames se mantienen)
+        fillColor: {
+          value: "#0a0a1a", // Color del rastro (debe coincidir con el color de fondo)
+        },
+      },
     },
     number: {
       density: {
         enable: true,
-        area: 800,
+        area: 900, // Área de densidad ajustada
       },
-      value: 80, // Número de partículas
+      value: 150, // ¡Número de partículas aumentado significativamente! (Puedes experimentar con este valor)
     },
     opacity: {
-      value: 0.5, // Opacidad de las partículas
+      value: { min: 0.3, max: 0.7 }, // Opacidad variable entre partículas
+      animation: {
+        enable: true,
+        speed: 0.5,
+        sync: false,
+        // mover las partículas con opacidad variable
+        startValue: "random",
+        destroy: "none",
+      },
     },
     shape: {
-      type: "circle", // Forma de las partículas
-      // type: ["circle", "triangle", "star"], // Puedes usar múltiples formas
+      type: ["circle", "star"], // Usar círculos y estrellas
+      // type: ["circle", "square", "triangle", "star", "polygon"], // Experimenta con otras formas
+      // Puedes incluso añadir formas personalizadas con SVGs si quieres ir muy avanzado
     },
     size: {
-      value: { min: 1, max: 3 }, // Tamaño de las partículas
+      value: { min: 0.5, max: 3 }, // Tamaño variable de las partículas
+      animation: {
+        enable: true,
+        speed: 2,
+        sync: false,
+        startValue: "random",
+        // animar el tamaño ligeramente
+      },
     },
+    // Añadir brillo a las partículas (opcional, requiere CSS)
+    // twinkle: { enable: true, speed: 2, opacity: 0.5 }, // Esto puede simular estrellas parpadeando
   },
+  // Detectar dispositivos de alta resolución
   detectRetina: true,
 };
 

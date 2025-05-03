@@ -1,13 +1,84 @@
 /* src/components/Projects/Projects.module.css */
+.projects {
+  /* Estilos existentes para la sección Projects (padding, max-width, margin vienen de Global.css y SectionSeparator) */
+  position: relative;
+  z-index: 2;
+  overflow: hidden; /* Importante para los pseudo-elementos */
+}
+
+/* Elemento decorativo top-right (punto brillante) */
+.projects::before {
+  content: "";
+  position: absolute;
+  top: 20px; /* Distancia desde arriba */
+  right: 20px; /* Distancia desde la derecha */
+  width: 8px; /* Tamaño del punto */
+  height: 8px;
+  background-color: var(--color-primary-accent); /* Color del punto */
+  border-radius: 50%; /* Hacerlo circular */
+  box-shadow: 0 0 10px var(--color-primary-accent),
+    0 0 15px var(--color-secondary-accent); /* Glow */
+  z-index: 3;
+}
+
+/* Elemento decorativo bottom-left (punto brillante) */
+.projects::after {
+  content: "";
+  position: absolute;
+  bottom: 20px; /* Distancia desde abajo */
+  left: 20px; /* Distancia desde la izquierda */
+  width: 8px; /* Tamaño del punto */
+  height: 8px;
+  background-color: var(--color-secondary-accent); /* Color del punto */
+  border-radius: 50%; /* Hacerlo circular */
+  box-shadow: 0 0 10px var(--color-secondary-accent),
+    0 0 15px var(--color-primary-accent); /* Glow */
+  z-index: 3;
+}
+
 .projects h2 {
   margin-bottom: 40px;
 }
 
 .projectsGrid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(280px, 1fr)
-  ); /* Grilla responsiva */
-  gap: 30px; /* Espacio entre tarjetas */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* Estilos de ProjectCard (no cambian en este paso) */
+.card {
+  /* ... */
+}
+.card:hover {
+  /* ... */
+}
+/* Pseudo-elementos de ProjectCard (no cambian en este paso) */
+.card::before {
+  /* ... */
+}
+.card::after {
+  /* ... */
+}
+.card:hover::before {
+  /* ... */
+}
+.card:hover::after {
+  /* ... */
+}
+
+.card h3 {
+  /* ... */
+}
+.card p {
+  /* ... */
+}
+.githubButton {
+  /* ... */
+}
+.githubButton:hover {
+  /* ... */
+}
+.githubButton:active {
+  /* ... */
 }

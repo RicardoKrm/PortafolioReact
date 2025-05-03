@@ -1,8 +1,8 @@
 import React from "react";
 import ProjectCard from "../ProjectCard/ProjectCard";
 import styles from "./Projects.module.css";
-// Importa el componente Fade desde react-awesome-reveal
-import { Fade } from "react-awesome-reveal";
+// Importa los componentes Fade y Zoom
+import { Fade, Zoom } from "react-awesome-reveal";
 
 // **IMPORTANTE: Reemplaza esta data con tus proyectos**
 const projectsData = [
@@ -81,14 +81,14 @@ const projectsData = [
 function Projects() {
   return (
     <section id="projects" className={styles.projects}>
-      {/* Usamos Fade en lugar de ScrollReveal.div */}
+      {/* El título se desvanece */}
       <Fade duration={800} delay={100} triggerOnce={true}>
         <h2>Proyectos</h2>
       </Fade>
       <div className={styles.projectsGrid}>
         {projectsData.map((project, index) => (
-          // Los comentarios problemáticos /*...*/ dentro de la expresión del map han sido eliminados
-          <Fade
+          // Asegúrate de que no haya ningún comentario aquí justo antes del <Zoom>
+          <Zoom
             key={project.id}
             duration={800}
             delay={100 * (index + 2)}
@@ -99,7 +99,7 @@ function Projects() {
               description={project.description}
               githubLink={project.githubLink}
             />
-          </Fade>
+          </Zoom>
         ))}
       </div>
     </section>

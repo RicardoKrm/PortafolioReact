@@ -1,13 +1,146 @@
 /* src/components/About/About.module.css */
-.about h2 {
-  margin-bottom: 30px;
+.about {
+  /* Estilos base (sin cambios) */
+  background-color: var(
+    --color-card-background
+  ); /* O #15152A si prefieres el tono más oscuro */
+  border: 1px solid var(--color-card-border);
+  border-radius: 8px;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
 }
 
-.about p {
+/* --- Pseudo-elemento para la PRIMERA capa de onda (Efecto Onda Azul/Cian Refinada) --- */
+.about::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* --- Fondo gradiente animado (Efecto Onda Azul/Cian - Refinado) --- */
+  /* Gradiente con más stops y RGBA para una transición más suave */
+  background: linear-gradient(
+    to right,
+    rgba(0, 170, 255, 0) 0%,
+    /* Transparente al inicio */ rgba(0, 170, 255, 0.4) 10%,
+    /* Empieza a brillar (azul eléctrico) */ rgba(0, 200, 255, 0.7) 15%,
+    /* Pico de brillo (azul/cian más claro) */ rgba(0, 170, 255, 0.4) 20%,
+    /* Vuelve a brillar menos */ rgba(0, 170, 255, 0) 30%
+      /* Transparente al final de la banda */
+  );
+  background-size: 250% 100%; /* Tamaño para la animación */
+  animation: blueWavePan 5s linear infinite; /* Animación de movimiento */
+  /* -------------------------------------------------------------------- */
+
+  z-index: 0; /* Detrás del contenido */
+  opacity: 0.6; /* Opacidad de esta capa (ajustada ligeramente) */
+}
+
+/* --- Pseudo-elemento para la SEGUNDA capa de onda (Efecto Onda Morada/Secundaria Refinada) --- */
+.about::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* --- Fondo gradiente animado (Efecto Onda Morada/Secundaria - Refinado) --- */
+  /* Gradiente similar al anterior pero con colores morados */
+  background: linear-gradient(
+    to right,
+    rgba(74, 0, 224, 0) 0%,
+    /* Transparente al inicio */ rgba(74, 0, 224, 0.4) 10%,
+    /* Empieza a brillar (morado vibrante) */ rgba(142, 45, 226, 0.6) 15%,
+    /* Pico de brillo (morado más claro) */ rgba(74, 0, 224, 0.4) 20%,
+    /* Vuelve a brillar menos */ rgba(74, 0, 224, 0) 30%
+      /* Transparente al final de la banda */
+  );
+  background-size: 350% 100%; /* Tamaño para la animación (diferente) */
+  animation: blueWavePan 7s linear infinite; /* Misma animación, diferente duración */
+  animation-delay: 1s; /* Retraso para desfasar */
+  /* -------------------------------------------------------------------------- */
+
+  z-index: 0; /* Detrás del contenido */
+  opacity: 0.5; /* Opacidad de esta capa (ajustada ligeramente) */
+}
+
+/* Keyframes para la animación de la onda (movimiento izquierda a derecha) */
+/* Estos keyframes son usados por ambos pseudo-elementos */
+@keyframes blueWavePan {
+  0% {
+    background-position-x: 0%;
+  }
+  100% {
+    background-position-x: 100%;
+  }
+}
+
+/* Asegurar que no haya pseudo-elementos estáticos anteriores */
+/* Las definiciones de ::before y ::after de arriba ya sobrescriben */
+
+.about h2 {
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1; /* Asegurar que el título esté sobre los pseudo-elementos de fondo */
+}
+
+/* Estilos para el contenedor de la foto y el texto (Flexbox) */
+.aboutContent {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  z-index: 1; /* Asegura que el contenido esté sobre los pseudo-elementos */
+}
+
+/* Estilos para la foto */
+.aboutPhoto {
+  display: block;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-highlight);
+  box-shadow: 0 0 15px var(--color-highlight),
+    0 0 25px var(--color-primary-accent);
+  flex-shrink: 0;
+}
+
+/* Estilos para el contenedor del texto */
+.aboutText {
+  flex-grow: 1;
+  max-width: 600px;
+}
+
+.aboutText p {
   font-size: 1.1rem;
-  max-width: 800px;
-  margin: 0 auto;
   text-align: justify;
   color: var(--color-text-light);
   opacity: 0.9;
+  margin: 0;
+}
+
+/* Media query para pantallas pequeñas (responsivo) */
+@media (max-width: 768px) {
+  .aboutContent {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .aboutPhoto {
+    width: 140px;
+    height: 140px;
+  }
+
+  .aboutText {
+    max-width: 100%;
+  }
+
+  .aboutText p {
+    text-align: center;
+  }
 }

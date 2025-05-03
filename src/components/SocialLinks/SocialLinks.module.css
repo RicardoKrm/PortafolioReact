@@ -1,7 +1,49 @@
 /* src/components/SocialLinks/SocialLinks.module.css */
 .socialLinks {
+  /* Estilos existentes */
+  padding-bottom: 80px;
   text-align: center;
-  padding-bottom: 80px; /* Espacio al final */
+  position: relative;
+  z-index: 2;
+  overflow: hidden; /* Importante para los pseudo-elementos */
+}
+
+/* Elemento decorativo izquierdo (línea vertical) */
+.socialLinks::before {
+  content: "";
+  position: absolute;
+  top: 50%; /* Centrado verticalmente */
+  left: 0; /* Pegado a la izquierda */
+  transform: translateY(-50%); /* Ajuste para centrado */
+  width: 3px; /* Ancho de la línea */
+  height: 80px; /* Altura de la línea */
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-highlight),
+    transparent
+  ); /* Gradiente vertical */
+  box-shadow: 0 0 8px var(--color-highlight); /* Glow */
+  z-index: 3;
+}
+
+/* Elemento decorativo derecho (línea vertical) */
+.socialLinks::after {
+  content: "";
+  position: absolute;
+  top: 50%; /* Centrado verticalmente */
+  right: 0; /* Pegado a la derecha */
+  transform: translateY(-50%); /* Ajuste para centrado */
+  width: 3px; /* Ancho de la línea */
+  height: 80px; /* Altura de la línea */
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-primary-accent),
+    transparent
+  ); /* Gradiente vertical */
+  box-shadow: 0 0 8px var(--color-primary-accent); /* Glow */
+  z-index: 3;
 }
 
 .socialLinks h2 {
@@ -11,53 +53,29 @@
 .linksContainer {
   display: flex;
   justify-content: center;
-  gap: 20px; /* Espacio entre los botones */
-  flex-wrap: wrap; /* Permite que los botones se envuelvan en pantallas pequeñas */
+  gap: 25px;
+  flex-wrap: wrap;
 }
 
+/* Estilos de Botones Sociales (no cambian en este paso) */
 .iconButton {
-  display: inline-flex; /* Permite alinear ícono y texto si los usas */
-  align-items: center;
-  gap: 8px; /* Espacio entre ícono y texto */
-  padding: 12px 25px;
-  background-color: var(--color-button-background);
-  color: var(--color-button-text);
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1rem;
-  transition: background-color 0.3s ease, transform 0.1s ease,
-    box-shadow 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+  /* ... */
 }
-
 .iconButton:hover {
-  background-color: var(--color-button-hover);
-  transform: translateY(-5px); /* Efecto "lift up" */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5),
-    0 0 10px var(--color-primary-accent); /* Sombra y brillo al pasar el ratón */
+  /* ... */
 }
-
 .iconButton:active {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  /* ... */
 }
-
+@keyframes subtleButtonGlow {
+  /* ... */
+}
 .cvButton {
-  background-color: var(
-    --color-secondary-accent
-  ); /* Color diferente para el CV */
+  /* ... */
 }
-
 .cvButton:hover {
-  background-color: var(
-    --color-primary-accent
-  ); /* Cambio de color al pasar el ratón */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5),
-    0 0 10px var(--color-secondary-accent);
+  /* ... */
 }
-
-/* Si usas react-icons, puedes estilizar los íconos dentro del botón */
-.iconButton svg {
-  /* Estilos para los íconos si están presentes */
+@keyframes subtleButtonGlowCV {
+  /* ... */
 }

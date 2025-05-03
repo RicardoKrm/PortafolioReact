@@ -3,55 +3,110 @@
   background-color: var(--color-card-background);
   border: 1px solid var(--color-card-border);
   border-radius: 8px;
-  padding: 20px;
+  padding: 25px;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out,
+    border-color 0.4s ease-out;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%; /* Asegura que las tarjetas tengan la misma altura si el contenido varía */
+  height: 100%;
+  position: relative; /* Necesario para los pseudo-elementos */
+  overflow: hidden; /* Oculta cualquier desbordamiento de los pseudo-elementos o sombras */
+  z-index: 1; /* Asegura que esté en la capa correcta */
+}
+
+/* Pseudo-elemento para el borde superior/izquierdo animado */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%; /* Empieza sin ancho */
+  height: 2px; /* Altura de la línea del borde */
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-highlight)
+  ); /* Gradiente para el color del borde */
+  transition: width 0.4s ease-out; /* Anima el ancho */
+  z-index: 2; /* Encima del contenido de la tarjeta */
+}
+
+/* Pseudo-elemento para el borde inferior/derecho animado */
+.card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 2px; /* Ancho de la línea del borde */
+  height: 0%; /* Empieza sin altura */
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-primary-accent)
+  ); /* Gradiente para el color del borde */
+  transition: height 0.4s ease-out; /* Anima la altura */
+  z-index: 2;
 }
 
 .card:hover {
-  transform: translateY(-10px); /* Efecto "lift up" al pasar el ratón */
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 15px var(--color-highlight); /* Sombra y brillo */
+  transform: translateY(-15px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6),
+    /* Sombra oscura */ 0 0 25px var(--color-highlight),
+    /* Brillo principal */ 0 0 40px var(--color-primary-accent); /* Brillo secundario */
+  border-color: var(--color-highlight); /* Borde cambia de color */
+  cursor: pointer;
+}
+
+/* Animación de los pseudo-elementos al pasar el ratón */
+.card:hover::before {
+  width: 100%; /* El borde superior/izquierdo se extiende */
+}
+
+.card:hover::after {
+  height: 100%; /* El borde inferior/derecho se extiende */
 }
 
 .card h3 {
-  color: var(
-    --color-highlight
-  ); /* Color de resaltado para el título del proyecto */
+  color: var(--color-highlight);
   margin-top: 0;
   margin-bottom: 15px;
+  font-size: 1.3rem;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
 }
 
 .card p {
   font-size: 1rem;
   color: var(--color-text-light);
   opacity: 0.9;
-  flex-grow: 1; /* Permite que el párrafo ocupe el espacio disponible */
+  flex-grow: 1;
   margin-bottom: 20px;
 }
 
 .githubButton {
-  display: inline-block; /* Comportamiento de botón */
-  padding: 10px 15px;
-  background-color: var(
-    --color-button-background
-  ); /* Usa el color de botón definido globalmente */
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--color-button-background);
   color: var(--color-button-text);
+  border: none;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.1s ease;
-  margin-top: auto; /* Empuja el botón hacia abajo */
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.1s ease,
+    box-shadow 0.3s ease;
+  margin-top: auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .githubButton:hover {
   background-color: var(--color-button-hover);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 0 8px var(--color-highlight);
 }
 
 .githubButton:active {
-  transform: translateY(0);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }

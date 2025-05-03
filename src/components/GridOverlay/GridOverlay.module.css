@@ -1,0 +1,60 @@
+/* src/components/GridOverlay/GridOverlay.module.css */
+
+.gridOverlay {
+  position: fixed; /* Cubre toda la ventana */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Colócalo encima del fondo (z-index: 0) pero debajo del contenido (z-index: 2) */
+  pointer-events: none; /* Importante: permite que los clicks pasen a los elementos de abajo */
+
+  /* Crear la cuadrícula usando background-image con gradientes repetidos */
+  background-image: repeating-linear-gradient(
+      to right,
+      transparent 0px,
+      transparent 19px,
+      /* Espacio entre líneas verticales */ var(--color-highlight) 20px,
+      /* Línea vertical */ transparent 21px /* Transición suave */
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 19px,
+      /* Espacio entre líneas horizontales */ var(--color-highlight) 20px,
+      /* Línea horizontal */ transparent 21px /* Transición suave */
+    );
+
+  background-size: 20px 20px; /* Tamaño de la celda de la cuadrícula (ajusta para cambiar la densidad) */
+
+  opacity: 0.05; /* Opacidad muy baja para que sea sutil */
+  transition: opacity 0.5s ease; /* Transición para cambios de opacidad si decides animarla */
+
+  /* Añadir animación sutil (opcional) */
+  animation: pulseGrid 15s infinite ease-in-out; /* Animación de pulso lento */
+}
+
+/* Animación de pulso para la cuadrícula */
+@keyframes pulseGrid {
+  0% {
+    opacity: 0.05;
+  }
+  50% {
+    opacity: 0.08;
+  } /* Ligeramente más visible a la mitad */
+  100% {
+    opacity: 0.05;
+  }
+}
+
+/* Puedes añadir un pequeño movimiento si quieres */
+/*
+  @keyframes moveGrid {
+      0% { background-position: 0 0; }
+      100% { background-position: 20px 20px; } // Mueve la cuadrícula lentamente
+  }
+  .gridOverlay {
+      ... otras propiedades
+      animation: moveGrid 60s linear infinite; // Animación de movimiento lento
+  }
+  */
